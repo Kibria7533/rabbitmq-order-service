@@ -12,7 +12,9 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+$router->get('/', function () {
+    return 'Hello World';
+});
 $router->get('/orders', ["as" => "orders", "uses" => "OrderController@getOrder"]);
 $router->post('/store', ["as" => "orders.store", "uses" => "OrderController@store"]);
 $router->delete('/delete/{id}', ["as" => "orders.delete", "uses" => "OrderController@delete"]);
