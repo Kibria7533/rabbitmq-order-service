@@ -12,8 +12,13 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+use Illuminate\Support\Facades\Route;
+
+Route::get('/start-queue', function () {
+    \Illuminate\Support\Facades\Artisan::call('queue:work',['--queue'=>'order.q']);
+});
 $router->get('/', function () {
-    return 'Hello World';
+    return 'Hello World from order service';
 });
 $router->get('/orders', ["as" => "orders", "uses" => "OrderController@getOrder"]);
 $router->post('/store', ["as" => "orders.store", "uses" => "OrderController@store"]);
